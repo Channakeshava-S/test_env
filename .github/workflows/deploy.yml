@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch: # <-- allows manual trigger from GitHub Actions tab
+  workflow_dispatch: # manual trigger
 
 jobs:
   deploy:
@@ -20,7 +20,7 @@ jobs:
           host: ${{ secrets.DO_HOST }}
           username: ${{ secrets.DO_USER }}
           key: ${{ secrets.DO_SSH_KEY }}
-          envs: DIRECTUS_KEY,DIRECTUS_SECRET,ADMIN_EMAIL,ADMIN_PASSWORD,DB_HOST,DB_PORT,DB_DATABASE,DB_USER,DB_PASSWORD,STORAGE_KEY,STORAGE_SECRET,STORAGE_BUCKET,STORAGE_REGION,STORAGE_ENDPOINT,STORAGE_PUBLIC_URL,STORAGE_ROOT
+          envs: DIRECTUS_KEY,DIRECTUS_SECRET,ADMIN_EMAIL,ADMIN_PASSWORD,DB_HOST,DB_PORT,DB_DATABASE,DB_USER,DB_PASSWORD,STORAGE_KEY,STORAGE_SECRET,STORAGE_BUCKET,STORAGE_REGION,STORAGE_ENDPOINT,STORAGE_PUBLIC_URL,STORAGE_ROOT,DROPLET_HOST
           script: |
             set -e
             cd /home/directus-app
@@ -34,5 +34,4 @@ jobs:
             fi
 
             echo ">>> Starting Docker Compose on port 8056"
-            docker compose down
-            docker compose up -d
+            docker compose up -d --build
