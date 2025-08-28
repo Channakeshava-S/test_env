@@ -14,7 +14,7 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
-      PUBLIC_URL: http://localhost:8055
+      PUBLIC_URL: http://209.38.115.12:8055
 
       STORAGE_LOCATIONS: designheroes
       STORAGE_DESIGNHEROES_DRIVER: s3
