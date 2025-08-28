@@ -34,4 +34,5 @@ jobs:
             fi
 
             echo ">>> Starting Docker Compose on port 8056"
-            docker compose up -d --build
+            docker compose down
+            docker compose up -d
