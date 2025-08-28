@@ -23,7 +23,7 @@ jobs:
           envs: DIRECTUS_KEY,DIRECTUS_SECRET,ADMIN_EMAIL,ADMIN_PASSWORD,DB_HOST,DB_PORT,DB_DATABASE,DB_USER,DB_PASSWORD,STORAGE_KEY,STORAGE_SECRET,STORAGE_BUCKET,STORAGE_REGION,STORAGE_ENDPOINT,STORAGE_PUBLIC_URL,STORAGE_ROOT
           script: |
             set -e
-            cd /opt/directus-app
+            cd /home/directus-app
 
             echo ">>> Pulling latest code"
             if [ ! -d .git ]; then
