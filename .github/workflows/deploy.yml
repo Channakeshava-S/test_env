@@ -33,5 +33,24 @@ jobs:
               git pull origin main
             fi
 
-            echo ">>> Starting Docker Compose on port 8056"
-            docker compose up -d --build
+            echo ">>> Restarting Docker Compose on port 8056"
+            docker compose down
+            docker compose up -d --remove-orphans
+        env:
+          DIRECTUS_KEY: ${{ secrets.DIRECTUS_KEY }}
+          DIRECTUS_SECRET: ${{ secrets.DIRECTUS_SECRET }}
+          ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          STORAGE_KEY: ${{ secrets.STORAGE_KEY }}
+          STORAGE_SECRET: ${{ secrets.STORAGE_SECRET }}
+          STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+          STORAGE_REGION: ${{ secrets.STORAGE_REGION }}
+          STORAGE_ENDPOINT: ${{ secrets.STORAGE_ENDPOINT }}
+          STORAGE_PUBLIC_URL: ${{ secrets.STORAGE_PUBLIC_URL }}
+          STORAGE_ROOT: ${{ secrets.STORAGE_ROOT }}
+          DROPLET_HOST: ${{ secrets.DROPLET_HOST }}
