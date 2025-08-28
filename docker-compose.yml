@@ -27,7 +27,7 @@ services:
       STORAGE_DESIGNHEROES_ROOT: ${STORAGE_ROOT}
 
     ports:
-      - "8055:8055"
+      - "8056:8055"
     networks:
       - backend
 
