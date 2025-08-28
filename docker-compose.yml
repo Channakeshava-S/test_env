@@ -1,0 +1,35 @@
+version: "3.9"
+services:
+  directus:
+    image: directus/directus:9.4.2
+    restart: always
+    environment:
+      KEY: ${DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DB_CLIENT: mysql
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      PUBLIC_URL: http://localhost:8055
+
+      STORAGE_LOCATIONS: designheroes
+      STORAGE_DESIGNHEROES_DRIVER: s3
+      STORAGE_DESIGNHEROES_KEY: ${STORAGE_KEY}
+      STORAGE_DESIGNHEROES_SECRET: ${STORAGE_SECRET}
+      STORAGE_DESIGNHEROES_BUCKET: ${STORAGE_BUCKET}
+      STORAGE_DESIGNHEROES_REGION: ${STORAGE_REGION}
+      STORAGE_DESIGNHEROES_ENDPOINT: ${STORAGE_ENDPOINT}
+      STORAGE_DESIGNHEROES_PUBLIC_URL: ${STORAGE_PUBLIC_URL}
+      STORAGE_DESIGNHEROES_ROOT: ${STORAGE_ROOT}
+
+    ports:
+      - "8055:8055"
+    networks:
+      - backend
+
+networks:
+  backend:
